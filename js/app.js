@@ -526,7 +526,39 @@ x = 0;
 
 //****************************** LOCATION SELECTION *********************************************/
 x = 0;
- function select_location(){
+function goPerfil(){
+  if (control != undefined) {
+    map.removeControl(control);
+  }
+
+  if (typeof(marker) == 'undefined') {
+    //nothing
+  }
+  else {
+    map.removeLayer(marker);
+  }
+  x=0;
+  document.getElementById("locate_position").style.display = "none";
+  document.getElementById("map_section").style.display = "none";
+  document.getElementById("help_section").style.display = "none";
+  document.getElementById("about_section").style.display = "none";
+  document.getElementById("contact_section").style.display = "none";
+  document.getElementById("capturing_section").style.display = "block";
+  var popup_choose=document.getElementById('locationsetting')
+  if (popup_choose) {
+    popup_choose.parentNode.removeChild(popup_choose);
+  }
+  var popup_submit=document.getElementById('digitalizeoptions')
+  if (popup_submit) {
+    popup_submit.parentNode.removeChild(popup_submit);
+  }
+  var popup_accuracy=document.getElementById('accuracy')
+  if (popup_accuracy) {
+    popup_accuracy.parentNode.removeChild(popup_accuracy);
+  }
+  closeNav();
+}
+/* function goPerfil(){
   located=false;
    closeNav();
    if (control != undefined) {
@@ -664,7 +696,7 @@ x = 0;
     }
     document.body.appendChild(popup);
     document.getElementById("locationsetting").style.display = "block";
-}
+}*/
 
 function onMapClick(e) {
   document.getElementById('myImage').style.display="none";

@@ -253,8 +253,9 @@ button:active {
 }
 
 .logo_start {
-  height: 55%;
+  height: 96%;
   width: 95%;
+  z-index: -100;
   position: absolute;
   left: 50%;
   top: 2%;
@@ -264,8 +265,6 @@ button:active {
 }
 
 #login_form {
-  z-index: 9999999;
-  margin-top: 31em;
   transition: opacity 1s ease-in-out;
   opacity: 0;
   display: none;
@@ -360,9 +359,9 @@ a:active {
 /************************************ FORM CSS*******************************************/
 /************************ FORM STYLE *******************************/
 .form {
-	margin-left: 1%;
+	margin-left: 2.5em;
   margin-right: 1%;
-  margin-top: 1%;
+  margin-top: 29em;
   margin-bottom: 1%;
 	border-radius: 1em;
 	background-color: #E6E6E6;
@@ -372,9 +371,15 @@ a:active {
 	padding-right: 0.5em;
 	padding-bottom: 0.5em;
 	float: left;
-	width: 94%;
+	width: 25em;
   height: 94%;
 	box-shadow: 0px 3px 10px #B5C1C5, 0 0 0 0px #EEF5F7 inset;
+}
+
+#register_form {
+    margin-top: 2.5em;
+    width: 90%;
+    margin-left: 3.5%;
 }
 
 .left {
@@ -669,7 +674,7 @@ button:active {
 /************************************************ STYLE CSS **********************************************/
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #bfbf40;
+  background-color: #0066cc;
   height: 4em;
   overflow: hidden;
 }
@@ -735,20 +740,21 @@ body {
     width: 0;
     position: fixed;
     z-index: 999999999;
-    top: 0;
+    top: 4em;
     left: 0;
-    background-color: #bfbf40;
+    background-color: #0066cc;
+    opacity: 0.7;
     overflow-x: hidden;
     transition: 0.65s;
-    padding-top: 90px;
+    padding-top: 3em;
 }
 
 .sidenav a {
-    padding: 12px 8px 32px 32px;
+    padding: 5px 8px 20px 20px;
     text-decoration: none;
     font-family: 'Pacifico', cursive;
     font-size: 1.5em;
-    color: white;
+    color: black;
     display: block;
     transition: 0.3s;
 }
