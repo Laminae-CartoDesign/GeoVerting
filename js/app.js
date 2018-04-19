@@ -41,24 +41,9 @@ function create_map() {
   catch (error) {
 
   }
-  //var crs = proj4.defs("EPSG:4326", "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
-  
-  /*var crs = new L.Proj.CRS('EPSG:25830',
-  '+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
-  );*/
 
-  /*var etrs89 = new proj.Projection({
-       code: 'EPSG:25830',
-       //global:false,
-       extent: [-729785.83,3715125.82,940929.67,9518470.69],
-       units: 'm'
-   });*/
-
-  // initialize the map on the "map" div with a given center and zoom
   map = L.map('mapid').setView([39.5, -2.8], 5);
 
-//39.475498, -2.5
-//40.418889 , -3.691944
 
   // load a tile layer
   var OpenStreetMap =L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -237,25 +222,7 @@ create_map();
 
 });
 
-//****************************** INDEX PAGE *****************************************************/
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 var app = {
 
     // Application Constructor
@@ -558,145 +525,7 @@ function goPerfil(){
   }
   closeNav();
 }
-/* function goPerfil(){
-  located=false;
-   closeNav();
-   if (control != undefined) {
-     map.removeControl(control);
-   }
 
-   if (typeof(marker) == 'undefined') {
-     //nothing
-   }
-   else {
-     map.removeLayer(marker);
-   }
-   var popup_accuracy=document.getElementById('accuracy')
-   if (popup_accuracy) {
-     popup_accuracy.parentNode.removeChild(popup_accuracy);
-   }
-   document.getElementById("locate_position").style.display = "none";
-
-    var popup = document.getElementById('locationsetting');
-    if (typeof(popup) == 'undefined' || popup == null) {
-      var popup = document.createElement('div');
-      popup.className = 'locationsetting';
-      popup.id = 'locationsetting';
-      var popup2 = document.getElementById('acc_div');
-      if ((typeof(popup2) == 'undefined') || (popup2 == null)) {
-        //nothing
-      }
-      else {
-        popup2.parentNode.removeChild(popup2);
-      };
-
-      var message1 = document.createElement('div');
-      message1.innerHTML = "GPS";
-      message1.className = 'GPS';
-      message1.id = 'GPS';
-      message1.onclick = function GPScoordinates(){
-
-                  var longitude_pre;
-                  var latitude_pre;
-                  var accuracy_pre;
-
-                  var accuracy_div = document.createElement('div');
-                  accuracy_div.className = 'acc_div';
-                  accuracy_div.id = 'acc_div';
-                  var accuracy_p = document.createElement('div');
-                  accuracy_p.className = 'acc_p';
-                  accuracy_p.id = 'acc_p';
-
-                  var accuracy_button = document.createElement('div');
-                  accuracy_button.className = 'acc_bttn';
-                  accuracy_button.id = 'acc_bttn';
-                  accuracy_button.innerHTML = "CAPTURE";
-                  accuracy_button.onclick = function confirmCoordinates(){
-                    document.getElementById('usernamecapture').value=user;
-                    longitude=longitude_pre;
-                    latitude=latitude_pre;
-                    document.getElementById('map_section').style.display='none';
-                    document.getElementById('capturing_section').style.display='block';
-                  };
-
-                  document.getElementById('map_section').appendChild(accuracy_div);
-                  document.getElementById('acc_div').appendChild(accuracy_p);
-                  document.getElementById('acc_div').appendChild(accuracy_button);
-                  document.getElementById('acc_bttn').style.display='none';
-
-                  document.getElementById('acc_p').innerHTML='Wait for accuracy';
-
-                  function watchPosition() {
-                    var options = {
-                      enableHighAccuracy: true,
-                      maximumAge: 3600000,
-                      enableHighAccuracy: true,
-                    };
-
-                    watchID=navigator.geolocation.watchPosition(geolocation, onError, options);
-
-                    function geolocation(position) {
-                      longitude_pre=position.coords.longitude;
-                      latitude_pre=position.coords.latitude;
-                      accuracy_pre=position.coords.accuracy.toFixed(3);
-                      if (typeof(marker) == 'undefined') {
-                        //nothing
-                      }
-                      else {
-                        map.removeLayer(marker);
-                      }
-                      if (typeof(marker) == 'undefined') {
-                        marker = setMarker(latitude_pre, longitude_pre);
-                        map.setView([latitude, longitude], 19);
-                        located=true;
-                      }
-                      else {
-                        marker.setLatLng(latitude_pre, longitude_pre);
-                        map.setView([latitude, longitude], 19);
-                        located=true;
-                      }
-                      var acc_box=document.getElementById('acc_p');
-                      if (acc_box) {
-                        document.getElementById('acc_p').innerHTML='Accuracy: '+accuracy_pre+' m'
-                        document.getElementById('acc_bttn').style.display='block';
-                      }
-                    };
-
-                    function onError(error) {
-                      alert('code: '+error.code+'\n'+'message: '+error.message+'\n');
-                    }
-                  };
-                  geolocate=setInterval(watchPosition, 5000);
-  								popup.parentNode.removeChild(popup);
-  						};
-
-      var message2 = document.createElement('div');
-      message2.innerHTML = "Manual Selection";
-      message2.className = 'manual';
-      message2.id = 'manual';
-     	message2.onclick = function manualSelection(){
-        if (typeof(marker) == 'undefined') {
-          //nothing
-        }
-        else {
-          map.removeLayer(marker);
-        }
-        var map_sec = document.getElementById("map_section");
-        var div_acc = document.getElementById("acc_div");   // Get the <ul> element with id="myList"
-        if (div_acc) {
-          map_sec.removeChild(div_acc);
-        }
-
-				map.on('click', onMapClick);
-				popup.parentNode.removeChild(popup);
-        document.getElementById('usernamecapture').value=user;
-		};
-      popup.appendChild(message1);
-      popup.appendChild(message2);
-    }
-    document.body.appendChild(popup);
-    document.getElementById("locationsetting").style.display = "block";
-}*/
 
 function onMapClick(e) {
   document.getElementById('myImage').style.display="none";
