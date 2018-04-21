@@ -15,6 +15,7 @@ function get_user() {
 
 /********************** DOCUMENT ON READY *************************************/
 $(document).ready( function () {
+  locate_position(),
   create_map();
 });
 

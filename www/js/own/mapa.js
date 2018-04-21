@@ -59,53 +59,55 @@ function create_map() {
 };
   L.control.layers(basemaps).addTo(map);
 
-  geojsonFeature.forEach(function(vert){
-    lat = vert.Latitud;
-    lon = vert.Longitud;
-    pnts = vert.Points;
-    
-    var geo = [lat,lon];
-    //var geo = L.latLng(lat,lon);
-
-    var popup = '<center><b>' + vert.Nombre.split() + '</b><br>' + vert.Hort + '</center>';
-    var icon_type
-    switch (pnts) {
-        case 10:
-        icon_type = './img/icons/marker-icon-blue.png';
-        break;
-        case 20:
-        icon_type = './img/icons/marker-icon-green.png';
-        break;
-        case 30:
-        icon_type = './img/icons/marker-icon-yellow.png';
-        break;
-        case 40:
-        icon_type = './img/icons/marker-icon-orange.png';
-        break;
-        case 50:
-        icon_type = './img/icons/marker-icon-red.png';
-        break;
-        default:
-        icon_type = './img/icons/marker-icon-blue.png'
-        break;
-    }   
-        
-     
-
-    icono = L.icon({
-        iconUrl: icon_type
-        
-    })
-
-    //Add marker at festival locations
-    var vertexMarker = new L.marker(geo, {icon: icono}).bindPopup(popup);
-
-    //vertexMarker.addTo(map);
-    markersLayer.addLayer(vertexMarker);
-    
-    markersLayer.addTo(map);
-  });
   
+
+      geojsonFeature.forEach(function(vert){
+        lat = vert.Latitud;
+        lon = vert.Longitud;
+        pnts = vert.Points;
+
+        
+        var geo = [lat,lon];
+        //var geo = L.latLng(lat,lon);
+
+        var popup = '<center><b>' + vert.Nombre.split() + '</b><br>' + vert.Hort + '</center>';
+        var icon_type
+        switch (pnts) {
+            case 10:
+            icon_type = './img/icons/marker-icon-blue.png';
+            break;
+            case 20:
+            icon_type = './img/icons/marker-icon-green.png';
+            break;
+            case 30:
+            icon_type = './img/icons/marker-icon-yellow.png';
+            break;
+            case 40:
+            icon_type = './img/icons/marker-icon-orange.png';
+            break;
+            case 50:
+            icon_type = './img/icons/marker-icon-red.png';
+            break;
+            default:
+            icon_type = './img/icons/marker-icon-blue.png'
+            break;
+        }   
+            
+        
+
+        icono = L.icon({
+            iconUrl: icon_type
+            
+        })
+
+        //Add marker at festival locations
+        var vertexMarker = new L.marker(geo, {icon: icono}).bindPopup(popup);
+
+        //vertexMarker.addTo(map);
+        markersLayer.addLayer(vertexMarker);
+        
+        markersLayer.addTo(map);
+    });
   
+    
 };
-

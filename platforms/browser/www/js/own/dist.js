@@ -3,8 +3,8 @@ function distancia(lat,lon, latitude, longitude){
     lon = lon * Math.PI / 180;
     latitude = latitude * Math.PI / 180;
     longitude = longitude * Math.PI / 180;
-    Alat = lat - latitude;
-    Alon = lon - longitude;
+    Alat = latitude - lat;
+    Alon = longitude - lon;
 
     
     

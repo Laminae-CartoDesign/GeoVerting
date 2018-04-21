@@ -23,7 +23,7 @@ x = 0;
       function geolocation(position) {
         longitude_pre=position.coords.longitude;
         latitude_pre=position.coords.latitude;
-        accuracy_pre=position.coords.accuracy.toFixed(3);
+        accuracy_pre=position.coords.accuracy.toFixed(1);
         if (typeof(marker) == 'undefined') {
           //nothing
         }
@@ -31,9 +31,13 @@ x = 0;
           map.removeLayer(marker);
         }
         if (typeof(marker) == 'undefined') {
+          
           marker = setMarker(latitude_pre, longitude_pre);
-
-          map.setView([latitude, longitude], 19);
+          if (located==false){
+            map.setView([latitude, longitude], 19);
+            
+          }
+          
           located=true;
         }
         else {
