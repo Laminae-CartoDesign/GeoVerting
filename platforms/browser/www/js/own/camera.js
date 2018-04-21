@@ -1,17 +1,48 @@
-function cameraTakePicture() {
-  document.getElementById("submit_bttn").style.display = "none";
-   navigator.camera.getPicture(onSuccess, onFail, {
-      quality: 50,
-      destinationType: Camera.DestinationType.DATA_URL
-   });
+// Funcion para configurar opciones para la camara
+function setOptions(srcType) {
+  var options = {
+    quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: srcType,
+    encodingType: Camera.EncodingType.JPEG,
+    mediaType: Camera.MediaType.PICTURE,
+    allowEdit: false,
+    correctOrientation: true
+  }
+  return options;
+};
 
-   function onSuccess(imageData) {
-      image = document.getElementById('myImage');
-      image.src = "data:image/jpeg;base64," + imageData;
-      document.getElementById("myImage").style.display = "block";
-   }
+// Funcion que se ejecuta si la foto se toma correctamente
+function onSuccess(imageUri) {
+  // Get today date
+  var today = new Date();
+  var now= String(today.getHours()) + String(today.getMinutes()) +
+    String(today.getSeconds()) + String(today.getDate()) +
+    String((today.getMonth()+1)) + String(today.getFullYear());
+  var file_name = user + now;
+  console.log(file_name);
+  // Hacer el boton visible
+  uploader.style.display = "block";
 
-   function onFail(message) {
-      alert('Failed because: ' + message);
-   }
-}
+  // Create a storage reference
+  var storageRef = firebase.storage().ref('fotos/' + file_name);
+
+  // Upload file
+  var task = storageRef.putString(imageUri);
+  console.log(imageUri, 'base64url');
+};
+
+// Funcion que se ejecuta si hay un error al tomar la foto
+function onError() {
+  console.debug("No se ha podido tomar la foto: " + error, "app");
+};
+
+
+// Funcion para abrir la camara
+function openCamera() {
+  var srcType = Camera.PictureSourceType.CAMERA;
+  var options = setOptions(srcType);
+  //var func = createNewFileEntry;
+
+  navigator.camera.getPicture(onSuccess, onError, options);
+};

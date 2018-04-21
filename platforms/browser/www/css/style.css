@@ -141,6 +141,26 @@ p {
 	border: none;
 	border-radius: 10em;
 }
+
+.upload_picture {
+  position: absolute;
+  left: 22em;
+  z-index: 999;
+  width: 3.5em;
+  height: 3.5em;
+  padding-top: 0.3em;
+  padding-bottom: 0.1em;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+  bottom: 15em;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	background-color: #FFFFFF;
+	border: none;
+	border-radius: 10em;
+}
 .img_title {
   position: absolute;
   left: 50%;
