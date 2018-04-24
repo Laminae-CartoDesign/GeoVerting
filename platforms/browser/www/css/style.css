@@ -124,7 +124,7 @@ p {
 
 .locate_position {
   position: absolute;
-  left: 22em;
+  right: 5%;
   z-index: 999;
   width: 3.5em;
   height: 3.5em;
@@ -132,7 +132,7 @@ p {
   padding-bottom: 0.1em;
   padding-right: 0.1em;
   padding-left: 0.1em;
-  bottom: 10em;
+  bottom: 20%;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;

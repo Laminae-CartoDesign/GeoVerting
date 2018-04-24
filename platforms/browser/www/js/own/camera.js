@@ -21,8 +21,6 @@ function onSuccess(imageUri) {
     String((today.getMonth()+1)) + String(today.getFullYear());
   var file_name = user + now;
   console.log(file_name);
-  // Hacer el boton visible
-  uploader.style.display = "block";
 
   // Create a storage reference
   var storageRef = firebase.storage().ref('fotos/' + file_name);

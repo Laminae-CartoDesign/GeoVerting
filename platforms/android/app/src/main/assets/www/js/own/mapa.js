@@ -51,40 +51,61 @@ function create_map() {
       }
   });
 
+  var basemaps = {
+    "Street Map" : OpenStreetMap,
+    "Grayscale" : OpenStreetMap_BlackAndWhite,
+    "Terrain Map" : OpenTopoMap,
+    "Satellite Imagery": Esri_WorldImagery
+};
+  L.control.layers(basemaps).addTo(map);
+
   geojsonFeature.forEach(function(vert){
     lat = vert.Latitud;
     lon = vert.Longitud;
-
-    //console.log(latc);
-    //console.log(lonc);
+    pnts = vert.Points;
+    
     var geo = [lat,lon];
+    //var geo = L.latLng(lat,lon);
 
-    var popup = '<center><b>' + vert.Nombre + '</b><br>' +'</center>'
+    var popup = '<center><b>' + vert.Nombre.split() + '</b><br>' + vert.Hort + '</center>';
+    var icon_type
+    switch (pnts) {
+        case 10:
+        icon_type = './img/icons/marker-icon-blue.png';
+        break;
+        case 20:
+        icon_type = './img/icons/marker-icon-green.png';
+        break;
+        case 30:
+        icon_type = './img/icons/marker-icon-yellow.png';
+        break;
+        case 40:
+        icon_type = './img/icons/marker-icon-orange.png';
+        break;
+        case 50:
+        icon_type = './img/icons/marker-icon-red.png';
+        break;
+        default:
+        icon_type = './img/icons/marker-icon-blue.png'
+        break;
+    }   
+        
+     
 
+    icono = L.icon({
+        iconUrl: icon_type
+        
+    })
 
     //Add marker at festival locations
-    var vertexMarker = new L.marker(geo).bindPopup(popup);//,{icon: logofest, draggable:false}); //{radius: 8, color: "black", fillColor: "yellow", fillOpacity: 1})
+    var vertexMarker = new L.marker(geo, {icon: icono}).bindPopup(popup);
 
     //vertexMarker.addTo(map);
     markersLayer.addLayer(vertexMarker);
+    
     markersLayer.addTo(map);
-
   });
-
-  //Selector de capas
-  var basemaps = {
-      "Street Map" : OpenStreetMap,
-      "Grayscale" : OpenStreetMap_BlackAndWhite,
-      "Terrain Map" : OpenTopoMap,
-      "Satellite Imagery": Esri_WorldImagery
-  };
-  var overlaymaps = {
-      "Vertices" : markersLayer,
-  };
-
-  //Creamos controlador de capas
-  L.control.layers(basemaps, overlaymaps).addTo(map);
-
-  L.closePopupOnClick = true;
-
+  
+  
 };
+
