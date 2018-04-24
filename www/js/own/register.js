@@ -17,9 +17,16 @@ function register_done() {
   password=$('#passwordregister').val();
 
   firebase.auth().createUserWithEmailAndPassword(username, password)
-  .then(function(){
+  .then(function(user){
     $('#regiter_section').css('display', 'none');
-    $('#start_section').css('display', 'block')
+    $('#start_section').css('display', 'block');
+    user.updateProfile({
+      displayName: first_name
+    }).then(function() {
+      // Update successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
   })
   .catch(function (err) {
    // Handle errors
