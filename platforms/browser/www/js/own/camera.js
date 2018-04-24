@@ -19,13 +19,13 @@ function onSuccess(imageUri) {
   var now= String(today.getHours()) + String(today.getMinutes()) +
     String(today.getSeconds()) + String(today.getDate()) +
     String((today.getMonth()+1)) + String(today.getFullYear());
+
+  var user = firebase.auth().currentUser.displayName;
   var file_name = user + now;
   console.log(file_name);
-  // Hacer el boton visible
-  uploader.style.display = "block";
 
   // Create a storage reference
-  var storageRef = firebase.storage().ref('fotos/' + file_name);
+  var storageRef = firebase.storage().ref().child('fotos/'+ user + '/' + file_name);
 
   // Upload file
   var task = storageRef.putString(imageUri);

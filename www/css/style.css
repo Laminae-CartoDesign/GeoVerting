@@ -63,6 +63,7 @@ h1 {
     font-weight:normal;
     margin:0px;
     overflow:visible;
+    font-family: "Allerta Stencil";
     font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman";
     color: #000;
     display: block;
@@ -179,7 +180,7 @@ p {
   padding-bottom: 0.1em;
   padding-right: 0.1em;
   padding-left: 0.1em;
-  bottom: 13em;
+  bottom: 28em;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -202,7 +203,7 @@ p {
   padding-bottom: 0.1em;
   padding-right: 0.1em;
   padding-left: 0.1em;
-  bottom: 9em;
+  bottom: 23em;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
@@ -272,7 +273,7 @@ button:active {
 	background-color: #8c8c8c;
 }
 
-.logo_start {
+.fondo_start {
   height: 96%;
   width: 95%;
   z-index: -100;
@@ -280,7 +281,16 @@ button:active {
   left: 50%;
   top: 2%;
   margin-right: -50%;
-  border-radius: 3em;
+  -webkit-transform: translate(-50%, 0%);
+}
+
+.logo_start {
+  width: 75%;
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  margin-right: -50%;
   -webkit-transform: translate(-50%, 0%);
 }
 
@@ -378,10 +388,10 @@ a:active {
 
 /************************************ FORM CSS*******************************************/
 /************************ FORM STYLE *******************************/
-.form {
+.form1 {
 	margin-left: 2.5em;
   margin-right: 1%;
-  margin-top: 29em;
+  margin-top: 28.5em;
   margin-bottom: 1%;
 	border-radius: 1em;
 	background-color: #E6E6E6;
@@ -394,6 +404,24 @@ a:active {
 	width: 25em;
   height: 94%;
 	box-shadow: 0px 3px 10px #B5C1C5, 0 0 0 0px #EEF5F7 inset;
+}
+
+.form {
+  margin-left: 0.8em;
+  margin-right: 1%;
+  margin-top: 0.5em;
+  margin-bottom: 1%;
+  border-radius: 1em;
+  background-color: #E6E6E6;
+  z-index: 9999;
+  padding: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 1.5em;
+  float: left;
+  width: 28.5em;
+  height: 94%;
+  box-shadow: 0px 3px 10px #B5C1C5, 0 0 0 0px #EEF5F7 inset;
 }
 
 #register_form {
@@ -656,6 +684,8 @@ textarea:focus {
 	position: relative;
   width: 45%;
   float: left;
+  top: 0.5em;
+  left: 1em;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   padding-right: 0.1em;
@@ -763,7 +793,7 @@ body {
     top: 4em;
     left: 0;
     background-color: #0066cc;
-    opacity: 0.7;
+    opacity: 0.9;
     overflow-x: hidden;
     transition: 0.65s;
     padding-top: 3em;
@@ -772,9 +802,9 @@ body {
 .sidenav a {
     padding: 5px 8px 20px 20px;
     text-decoration: none;
-    font-family: 'Pacifico', cursive;
+    font-family: "Allerta Stencil";
     font-size: 1.5em;
-    color: black;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -806,7 +836,7 @@ body {
 /****************************************************************** LOCATIONSELECTION CSS ****************************************************/
 .accuracy{
     position:absolute;
-    z-index: 99999999;
+    z-index: -150;
     left: 50%;
     bottom: 15em;
     -webkit-transform: translate(-50%, 290%);

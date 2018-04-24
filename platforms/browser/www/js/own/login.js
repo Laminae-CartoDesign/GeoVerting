@@ -5,38 +5,29 @@ function sign_in() {
     $login_form.addClass('show');
   });
 
-  document.getElementById('button_div').style.display='none';
+ $('#button_div').css('display', 'none');
 };
 
 function log_in() {
   //Obtenemos el usuario y contraseña del formulario de log_in
-  user=document.getElementById('username').value;
-  password=document.getElementById('password').value;
-  //Obtenemos todos los usuarios almacenados
-  users=get_user();
-  //Inicializamos variables de comprobacion
-  user_ok=false;
-  pass_ok=false;
-  //Buscamos el usuario y el password entre los almacenados
-  for (i=0; i<users.length; i++) {
-    if (user==users[i]['username']) {
-      user_ok=true;
-      if (password==users[i]['password']) {
-        pass_ok=true;
-      };
-    };
-  };
-  //Ejecutamos segun se hayan encontrado ambos, solo uno o ninguno
-  if (user_ok==true && pass_ok==true) {
-    document.getElementById('start_section').style.display='none';
-    document.getElementById('navbar_section').style.display='block';
-    document.getElementById('map_section').style.display='block';
-  }
-  else if (user_ok==true && pass_ok==false) {
-    document.getElementById('username').value='Contraseña incorrecta';
-  }
-  else {
-    document.getElementById('username').value="Usuario no registrado";
-  }
-  map._onResize();
+  user=$('#username').val();
+  password=$('#password').val();
+  //Guardamos el usuario con los valores
+  firebase.auth().signInWithEmailAndPassword(user, password)
+  .then(function() {
+    map._onResize();
+    $('#start_section').css('display', 'none');
+    $('#navbar_section').css('display', 'block');
+    $('#map_section').css('display', 'block');
+  })
+  .catch(function(error) {
+    if (error.code === 'auth/wrong-password') {
+      $('#username').val("Contraseña incorrecta");
+    } else {
+      $('#username').val("Usuario no registrado");         
+    }
+  });
 }
+
+
+
