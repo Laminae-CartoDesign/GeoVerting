@@ -29,4 +29,5 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="android" spec="^7.0.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
 </widget>
