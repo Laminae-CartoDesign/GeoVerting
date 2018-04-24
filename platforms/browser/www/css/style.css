@@ -280,7 +280,6 @@ button:active {
   left: 50%;
   top: 2%;
   margin-right: -50%;
-  border-radius: 3em;
   -webkit-transform: translate(-50%, 0%);
 }
 

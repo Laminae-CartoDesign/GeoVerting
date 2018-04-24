@@ -57,7 +57,7 @@
     <link rel="stylesheet" type="text/css" href="css/leaflet-search.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -70,7 +70,7 @@
     <section id="navbar_section" style="display: none">
       <div class="topnav" id="myTopnav">
     	  <a href="#menu" onclick="openNav()"> <span style="font-size:1.3em;cursor:pointer">&#9776;</span> </a>
-    	  <img src="img/mini_logo.png" width="50em" height="50em"/a>
+    	  <img src="img/mini_logo.png" width="150em" height="35em"/a>
     	</div>
 
     	<div id="mySidenav" class="sidenav">
@@ -95,17 +95,18 @@
     <!-- **************************************** START SECTION ******************************* -->
     <section id="start_section">
       <!-- Insert APP Logo -->
-      <img class="logo_start" src="img/logo_prin.png" alt="logo">
+      <img class="fondo_start" src="img/logo_prin.png" alt="logo">
+      <img class="logo_start" src="img/logo.png" alt="logo">
       <br>
       <br>
       <!-- Username and Password -->
-      <div id="login_form" class="form">
+      <div id="login_form" class="form1">
         <p class="label">
-          Username:
+          Usuario:
         </p>
         <input type="text" name="username" id="username" placeholder="Username"><br>
         <p class="label">
-          Password:
+          Contraseña:
         </p>
         <input type="password" name="Password" id="password" placeholder="Password">
         <button type="button" id="submit_bttn" class="login_bttn" onclick="log_in()">
@@ -136,24 +137,24 @@
           User Information:
         </p>
         <p for="firstname" class="label">
-          First name:
+          Nombre:
         </p>
         <input type="text" name="firstname" id="firstname" placeholder="Mickey" required><br>
         <p for="lastname" class="label">
-          Last name:
+          Apellido/s:
         </p>
         <input type="text" name="lastname" id="lastname" placeholder="Mouse" required><br>
         <p for="user_name" class="label">
-          User Name:
+          Usuario:
         </p>
-        <input type="text" name="user_name" id="user_name" placeholder="mickey_mouse" required><br>
+        <input type="text" name="user_name" id="user_name" placeholder="mickey@gmail.com" required><br>
         <p for="password" class="label">
-          Password:
+          Contraseña:
         </p>
-        <input type="password" name="password" id="passwordregister" placeholder="***Password***" required><br>
+        <input type="password" name="password" id="passwordregister" placeholder="*Password: 6 carácteres*" required><br>
       	<p>
-          Please note: Your user name and password will be used as your login credentials!
-        </p>
+          ATENCIÓN: Su nombre de usuario y contraseña serán usados como credenciales para loguearse.
+        </p><br>
         <button type="button" class="back_bttn" onclick="back_bttn()">
           Back
         </button>
@@ -196,8 +197,6 @@
       </figure><br>
 
       <p id='subject' class='name'><b>que capturar vértices no sea solo un juego...</b></p><br>
-
-      <a href="#backtotop" class='back'>Back to top</a><br>
 
     </section>
 
@@ -248,8 +247,6 @@
           <p class="text-muted">Puntuación: 1 </p><br>
         </div>
       </div>
-
-      <a href="#backtotop" class='back'>Back to top</a><br>
     </section>
 
     <!-- ******************************************************** CONTACT SECTION ***************************************************** -->
@@ -271,47 +268,48 @@
     <section id="help_section" class="form" style="display: none">
       <!--Help page-->
 
-      <p><b>Select appropriate link for help:</b></p>
+      <p><b>Instrucciones para usar geoVerting:</b></p>
 
       <!--Creating headings-->
-      <h3 id='register'>Registration</h3>
+      <h3 id='register'>Register</h3>
       <!--Add text below-->
       <p>
-      When registering, ensure that you insert a valid username and set a password. <br>
+        El formulario de registro le solicita su nombre, sus apellidos y los siguientes datos:</p>
+      <p>- Username: introducir una dirección de correo electrónico.</p>
+      <p>- Password: introducir una contraseña que contenga, al menos, 6 carácteres.</p>
+      <p>Cuando se registre, asegurese de que introduce correctamente un nombre de usuario y una contraseña. <br>
       </p>
 
       <h3 id='login'>Login</h3>
       <!--Add text below-->
       <p>
-      Before attempting to login, ensure you have been registered. <br>
-      Once registered, you have to use your username and password.
+        Antes de acceder al Login, asegurese de que este registrado.<br>
+        Cuando usted esté registrado, debe emplear el mismo usuario (dirección de correo electrónico) y contraseña que seleccionó en el registro. <br>
       </p>
 
-      <h3 id='capturing'>Data Capturing</h3>
+      <h3 id='capturing'>Captura de datos:</h3>
       <!--Add text below-->
       <p>
-      When capturing the data, simply fill out the form and submit it. <br>
-      You can take a picture of the new monument pressing in the 'capture' button.
-
+      Cuando accede al mapa inicial, podrá capturar las coordenadas de los vértices geodésicos cuando está próximo a este, a una distancia máxima de 100 metros. <br>
+      Para capturar el vértice geodésico se accionará un botón de captura de datos mediante la cámara del dispositivo.<br>
+      Cuantos más vertices capture, mayor puntuación obtendrá.<br>
+      Según la altitud del vértice geodésico, mayor puntuación obtendrá.<br>
       </p>
 
-      <h3 id='location'>Location</h3>
+      <h3 id='location'>Localización</h3>
       <!--Add text below-->
       <p>
-      There are two options for capturing the locational data:
-      <br>
-      <br>
-      Option 1: GPS <br>
-      This option sets the location to your phone's GPS co-ordinates.
-      <br>
-      <br>
+      Debe tener activado el GPS de su dispositivo móvil para la localización en el mapa.
+      </p>
 
-      Option 2: Manual Selection <br>
-      This option allows for the manual selection of the location. <br>
-      Simply tap on the mobile screen to drop a pin and set the location.
+      <h3 id='location'>Menú de navegación</h3>
+      <!--Add text below-->
+      <p>
+      En él podrá encontrar las pestañas de Perfil de Usuario, Puntuaciones, Help y Contacto.<br>
+      En la pestaña de Puntuaciones podrá comprobar las puntuaciones del resto de usuarios y su propia puntuación.<br><br>
+
+      Para cualquier otra duda contacte con nosotros directamente desde la pestaña de Contacto.
       </p><br>
-
-      <a href="#backtotop" class='back'>Back to top</a><br><br>
     </section>
 
 
