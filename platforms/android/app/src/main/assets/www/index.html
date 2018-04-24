@@ -169,10 +169,7 @@
     <section id="map_section" style="display: none">
 
       <div id="mapid"></div>
-      <button type="button" id="locate_position" class="locate_position" onclick="openCamera()" style="display: block">
-        <img src="img/capture.svg" alt="capture icon">
-      </button>
-      <button type="button" id="upload_picture" class="upload_picture" style="display: none">
+      <button type="button" id="locate_position" class="locate_position" onclick="openCamera()" style="display: none">
         <img src="img/capture.svg" alt="capture icon">
       </button>
 
@@ -334,12 +331,13 @@
     <link rel="stylesheet" type="text/css" href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.0.0-rc.1.0/MarkerCluster.Default.css'/>
 
     <!-- Jquery -->
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
 
     <!-- Data -->
     <script type="text/javascript" src="data/roi2.js"></script>
 
     <!-- Own scripts -->
+    <script type="text/javascript" src="js/own/gnss.js"></script>
     <script type="text/javascript" src="js/own/app.js"></script>
     <script type="text/javascript" src="js/own/camera.js"></script>
     <script type="text/javascript" src="js/own/mapa.js"></script>
@@ -348,7 +346,7 @@
     <script type="text/javascript" src="js/own/login.js"></script>
     <script type="text/javascript" src="js/own/register.js"></script>
 
-    <script type="text/javascript" src="js/own/gnss.js"></script>
+    <script type="text/javascript" src="js/own/dist.js"></script>
 
 
     <!-- Firebase -->

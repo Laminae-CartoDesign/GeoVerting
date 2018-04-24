@@ -15,7 +15,7 @@ function get_user() {
 
 /********************** DOCUMENT ON READY *************************************/
 $(document).ready( function () {
-  getLocation();
+  gnss_positioning();
 });
 
 

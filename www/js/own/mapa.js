@@ -3,8 +3,6 @@
 // =============================
 
 // MAPA Y CAPAS
-var lat, lon
-
 try {
   map.off();
   map.remove();
@@ -61,88 +59,12 @@ var basemaps = {
 };
 L.control.layers(basemaps).addTo(map);
 
-///////////////////////////////////////////////////////
-
-
-//****************************** LOCATE POSITION *********************************************/
-//Funcion que obtiene las coordenadas GPS del dispositivo
-var marker;
-x = 0;
- 
-located=false;
-  //Creamos un popup para mostrar la precision
-var popup = document.createElement('div');
-popup.className = 'accuracy';
-popup.id = 'accuracy';
-document.body.appendChild(popup);
-document.getElementById('accuracy').innerHTML='Wait for accuracy';
-
-var options = {
-  enableHighAccuracy: true,
-  maximumAge: 3600000,
-  timeout: 6000
-};
-
-function getLocation() {
-  if (window.navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(locationSuccess, locationError, options);
-  } else {
-    alert("Geolocation not supported in this browser.");
-  }
-}
-    
-    
-function locationSuccess(position) {
-  
-  var current_lon = position.coords.longitude;
-  var current_lat = position.coords.latitude;
-  var current_acc = position.coords.accuracy;
-
-  
-  /*var acc_box=document.getElementById('accuracy');
-  if (acc_box) {
-    document.getElementById('accuracy').innerHTML='Accuracy: '+accuracy_pre+' m'
-  }*/
-  marker = setMarker(current_lat, current_lon);
-
-  map.setView([latitude,longitude],12);
-
-  distmin = 10;
-  list_distmin=[];
-  geojsonFeature.forEach(function(vert){
-
-    dist=Math.abs(distancia(vert.Latitud,vert.Longitud,current_lat,current_lon));
-    if (dist<distmin){
-      distmin=dist;
-      list_distmin.push([vert.Nombre,dist]);
-      
-    }
-
-
-  });
-  console.log('distmin: ', distmin);
-  console.log(list_distmin);
-
-
-};
-
-function locationError(error) {
-  alert('code: '+error.code+'\n'+'message: '+error.message+'\n');
-}
-      /*popup.parentNode.removeChild(popup);
-      document.body.appendChild(popup);*/
-
-
-    //geolocate=setInterval(watchPosition, 5000);
-		
-
-
 geojsonFeature.forEach(function(vert){
   lat = vert.Latitud;
   lon = vert.Longitud;
   pnts = vert.Points;
 
-  
+
   var geo = [lat,lon];
   //var geo = L.latLng(lat,lon);
 
@@ -167,13 +89,11 @@ geojsonFeature.forEach(function(vert){
       default:
       icon_type = './img/icons/marker-icon-blue.png'
       break;
-  }   
-      
-  
+  }
 
   icono = L.icon({
       iconUrl: icon_type
-      
+
   })
 
   //Add marker at festival locations
@@ -181,64 +101,9 @@ geojsonFeature.forEach(function(vert){
 
   //vertexMarker.addTo(map);
   markersLayer.addLayer(vertexMarker);
-  
+
   markersLayer.addTo(map);
 });
-
-
-
-
-    
-
-
-
-
-//****************************** LOCATION SELECTION *********************************************/
-x = 0;
-function onMapClick(e) {
-  document.getElementById('myImage').style.display="none";
-  latitude= e.latlng.lat;
-  longitude= e.latlng.lng;
-  x++;
-  if (x <=1) {
-    myIcon = L.icon({
-  	iconUrl: 'img/capturewhite.svg',
-  	iconSize: [20, 20]
-  });
-
-  popup = document.createElement('div');
-  popup.className = 'locationsetting';
-  popup.id = 'digitalizeoptions';
-
-  var message1 = document.createElement('div');
-  message1.innerHTML = "SUBMIT";
-  message1.className = 'GPS';
-  message1.id = 'GPS';
-  message1.onclick = function showCapturingForm(){
-              document.getElementById('map_section').style.display='none';
-              document.getElementById('capturing_section').style.display='block';
-              popup.parentNode.removeChild(popup);
-              x++;
-          };
-
-  var message2 = document.createElement('div');
-  message2.innerHTML = "DELETE";
-  message2.className = 'manual';
-  message2.id = 'manual';
-  message2.onclick = function removeMarker(){
-              //alert("I am an alert box!");
-              map.removeLayer(marker);
-              popup.parentNode.removeChild(popup);
-              x=0;
-          };
-
-  popup.appendChild(message1);
-  popup.appendChild(message2);
-  document.body.appendChild(popup);
-
-  marker = L.marker([latitude, longitude],{icon: myIcon}).bindPopup(popup).addTo(map);
-  }
-}
 
 function setMarker(latitude_input, longitude_input) {
   if (typeof(marker) == 'undefined') {
