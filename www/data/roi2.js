@@ -108528,8 +108528,5 @@ geojsonFeature = [
 		"Hort" : 30.669,
 		"Points" : 10,
 		"hvert": "1.200"
-	},
-	{
-		"Numero": ""
 	}
 ]
